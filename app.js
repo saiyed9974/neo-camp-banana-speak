@@ -10,17 +10,17 @@ btnTranslate.addEventListener("click", function clickEventhandler(){
 
 })
 
-document.body.onload = addElement;
-function addElement(){
+document.body.onload = dynamicElement
+function dynamicElement(){
 
-    var newdiv = document.createElement("div");
+    var newEle = document.createElement("div");
+    var newcont = document.createTextNode("I love NodeJS");
 
-    var newcontent = document.createTextNode("I love javascript");
+    newEle.appendChild(newcont);
 
-    newdiv.appendChild(newcontent);
+    var currentEle = document.getElementById("div1");
 
-    var currenttag = document.getElementById("div1");
+    document.body.insertBefore(newEle,currentEle);
 
-    document.body.insertBefore(newdiv,currenttag);
 
 }
