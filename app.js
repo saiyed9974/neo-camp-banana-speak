@@ -2,11 +2,10 @@
 var btnTranslate = document.querySelector("#btn-translate");
 
 var txtInput = document.querySelector("#txt-input");
-
+var output = document.querySelector("#output");
 
 btnTranslate.addEventListener("click", function clickEventhandler(){
 
-    console.log("CLICKED!");
-    console.log("input",txtInput.value);
+    output.innerText = " sdfsfdf(banana) "+ txtInput.value; 
 
 })
