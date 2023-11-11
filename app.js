@@ -2,15 +2,39 @@
 var btnTranslate = document.querySelector("#btn-translate");
 
 var txtInput = document.querySelector("#txt-input");
-var output = document.querySelector("#output");
+var outputText = document.querySelector("#output");
+
+function constructURL(text) {
+
+    return "https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json?text="+text // some probleme in minion api so I put this one
+
+}
+
+function errorHandler(error){
+console.log("error occured ",error);
+
+}
 
 btnTranslate.addEventListener("click", function clickEventhandler(){
-
-    output.innerText = " sdfsfdf(banana) "+ txtInput.value; 
+fetch(constructURL(txtInput))
+.then(response=>response.json())
+.then(json=>{ var translatedtext = json.contents.translated;
+                outputText.innerText = translatedtext; })
+.catch(errorHandler)
 
 })
 
-document.body.onload = dynamicElement
+
+
+
+
+
+
+
+
+/** create dynamic element */
+
+/**document.body.onload = dynamicElement
 function dynamicElement(){
 
     var newEle = document.createElement("div");
@@ -23,4 +47,5 @@ function dynamicElement(){
     document.body.insertBefore(newEle,currentEle);
 
 
-}
+} **/
+
