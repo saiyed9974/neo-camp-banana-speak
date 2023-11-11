@@ -3,10 +3,12 @@ var btnTranslate = document.querySelector("#btn-translate");
 
 var txtInput = document.querySelector("#txt-input");
 var outputText = document.querySelector("#output");
+var serverurl = "https://api.funtranslations.com/translate/minion.json"
+
 
 function constructURL(text) {
 
-    return "https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json?text="+text // some probleme in minion api so I put this one
+    return serverurl +"?"+ "text="+ text
 
 }
 
@@ -16,11 +18,13 @@ console.log("error occured ",error);
 }
 
 btnTranslate.addEventListener("click", function clickEventhandler(){
-fetch(constructURL(txtInput))
+    var inputText = txtInput.value;
+fetch(constructURL(inputText))
 .then(response=>response.json())
-.then(json=>{ var translatedtext = json.contents.translated;
-                outputText.innerText = translatedtext; })
-.catch(errorHandler)
+.then(json=>{var translatedText = json.contents.translated;
+            outputText.innerText = translatedText;
+                })
+.catch(errorHandler);
 
 })
 
@@ -32,20 +36,4 @@ fetch(constructURL(txtInput))
 
 
 
-/** create dynamic element */
-
-/**document.body.onload = dynamicElement
-function dynamicElement(){
-
-    var newEle = document.createElement("div");
-    var newcont = document.createTextNode("I love NodeJS");
-
-    newEle.appendChild(newcont);
-
-    var currentEle = document.getElementById("div1");
-
-    document.body.insertBefore(newEle,currentEle);
-
-
-} **/
 
